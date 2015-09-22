@@ -1,0 +1,22 @@
+language: c
+compiler:
+  - gcc
+
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "XAFHK0queKpfP4RL7cRq3rzT68SQXBp4GdEBQlYgEOspR4CA48Kwtp39NrO/k5Ar5eU5yxUQ3z6pvrwYgdZfj09Ro7pJfAt4obFFbqdVz3Q7ZD1aLOoG3DTJiyt8DPytXYqR4nu5cBwGx6GsYLgkSIfJEGDL/bAIzB+H2VnxaDYOIfa1c4m8et1ySSRx3Rpr8PDwM1Q9LJrbG4Mb7VTM4bhXiFCWw9SimT/J2osS6gsQMoeNFVTkZuvuKPWhczXPYZo7xm28r5B9KbkqWUgqoe2+kzSV3M7Tdl8HTm+flnNpVQZCqHxIRePAye3s1SoHJhA29eWlY3D2eXATekGMuJoJ/vz3LKIWZVbxBjhF+t+odO3A6oz1W8/gaGpXSiV00ypSNMpBetE0Nl3IObeLXkIdMbNEgQIeFwIelmQKo57gpbPuxjKiwQzcwiApf6eAIWnCwXhLkdFDyq8odY8TGZDb9T8nmf5TPiTjBgAGK+H2/dydolvA+u+4eKmboexSFJQRenVXGvXVKD2KINnjOpzZeyRR2+Xj0rRD/vg4/+WGmtbR7AdhZJty3QiCfmUUtt7P+95oO3iQ5ZWVRRXqaDG6Qs/qAzsqH9oc/TtWvWTb1332gbMyTtTCfF9aBQCwLLjC7VjHWWsu8U9lbgO7SEvuhlZwGyWhtCYHRk8MatY="
+
+addons:
+  coverity_scan:
+    project:
+      name: "liyinsg/Wi-FiTestSuite-Linux-DUT"
+      description: "Build submitted via Travis CI"
+    notification_email: liyin@live.com
+    build_command_prepend: "make clean"
+    build_command:   "make -j4"
+    branch_pattern: scan_*
+
+script:
+  - make -j4
