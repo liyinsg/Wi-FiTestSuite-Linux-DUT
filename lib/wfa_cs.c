@@ -3788,6 +3788,7 @@ int wfaStaCliCommand(int len, BYTE *caCmdBuf, int *respLen, BYTE *respBuf)
     sleep(2);
     if(pclose(sh_pipe) == -1)
     {
+        sh_pipe = NULL;
         printf("Error in closing shell cmd pipe\n");
         goto cleanup;
     }
